@@ -9,12 +9,13 @@ This repository serves as a demo to migrate from [ember-css-modules](https://git
 
 ### Setup
 
-I made this demo with a classic Ember app `6.2`.
+I made this demo with a classic Ember app `6.2`. [[332ba22](https://github.com/BlueCutOfficial/css-modules-to-scoped-css/commit/332ba223aa8391001cfb16b43efeb9be901a18b5)]
 
-For the setup, I used a copy of the component from [ember-welcome-page](https://github.com/ember-cli/ember-welcome-page). I removed the original `<WelcomePage />` component from the Ember app and replaced it with my `<WelcomePageCopy />`, which is a component defined directly in my application.
+For the setup, I used a copy of the component from [ember-welcome-page](https://github.com/ember-cli/ember-welcome-page). I removed the original `<WelcomePage />` component from the Ember app and replaced it with my `<WelcomePageCopy />`, which is a component defined directly in my application. [[6611e0e](https://github.com/BlueCutOfficial/css-modules-to-scoped-css/commit/6611e0eab76f1e2d96955274eb5d276b20eba776)]
 
-Then I installed the addon ember-css-modules and get the copy of ember-welcome-page CSS to work with it.
+Then I installed the addon ember-css-modules and get the copy of ember-welcome-page CSS to work with it. [[00fcf05](https://github.com/BlueCutOfficial/css-modules-to-scoped-css/commit/00fcf054c6153b2d407ccf0936c97c876fd0e1ff)]
 
+Note that ember-css-modules relies on local classes, the styles that apply to tag elements like `body`, `div`, `p`... remain global even if they are defined in the component's CSS. If you need a better understanding of this subtlety, you can have a look at the article [Cookbook: migrate an existing Ember app to CSS modules](https://mainmatter.com/blog/2022/08/24/cookbook-ember-app-to-css-modules/), which is quite old but still relevant to get explanations on that field.
 
 ## Working with the repository
 

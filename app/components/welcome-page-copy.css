@@ -19,11 +19,10 @@ p {
   font-size: 1.25em;
   margin: 0 0 .75em;
 }
-h1 {
-  font-size: 2.5em;
-  font-weight: 200;
-  line-height: 1.2;
-  margin-top: 0;
+.welcome-title {
+  composes: title from 'css-modules-to-scoped-css/components/header';
+  font-size: 2.2em;
+  color: rgb(255, 92, 68);
 }
 a:link,
 a:visited {

@@ -55,12 +55,10 @@ a:active {
 .postscript {
   color: rgb(28, 30, 36);
   background: rgb(244, 246, 248);
-  font-style: italic;
   line-height: 2;
   margin: 0 auto;
   max-width: 960px;
   padding-top: 3em;
-  text-align: center;
 }
 .postscript code {
   color: rgb(244, 246, 248);

@@ -4,3 +4,13 @@
   line-height: 1.2;
   margin-top: 0;
 }
+
+:global(.em-paragraph) {
+  font-style: italic;
+  text-align: center;
+}
+
+.local-em-paragraph {
+  font-style: italic;
+  text-align: center;
+}

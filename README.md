@@ -7,6 +7,14 @@ This repository serves as a demo to migrate from [ember-css-modules](https://git
 
 ## Walkthrough
 
+### Setup
+
+I made this demo with a classic Ember app `6.2`.
+
+For the setup, I used a copy of the component from [ember-welcome-page](https://github.com/ember-cli/ember-welcome-page). I removed the original `<WelcomePage />` component from the Ember app and replaced it with my `<WelcomePageCopy />`, which is a component defined directly in my application.
+
+Then I installed the addon ember-css-modules and get the copy of ember-welcome-page CSS to work with it.
+
 
 ## Working with the repository
 

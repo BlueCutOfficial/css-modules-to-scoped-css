@@ -17,11 +17,6 @@ used to easily set up this demo. */
 img {
   max-width: 100%;
 }
-.welcome-title {
-  composes: title from 'css-modules-to-scoped-css/components/header';
-  font-size: 2.2em;
-  color: ember-orange;
-}
 a:link,
 a:visited {
   color: ember-orange;
@@ -47,6 +42,13 @@ a:active {
 }
 .welcome > ul > li > a {
   font-weight: bold;
+}
+.welcome-title {
+  font-size: 2.2em;
+  font-weight: 200;
+  line-height: 1.2;
+  margin-top: 0;
+  color: ember-orange;
 }
 .postscript {
   color: rgb(28, 30, 36);

@@ -7,6 +7,8 @@ This repository serves as a demo to migrate from [ember-css-modules](https://git
 
 ## Walkthrough
 
+The idea of this walkthrough is to setup a demo project with ember-css-modules and migrate it to ember-scoped-css. You can use the steps below and the commit stack of the repo to apply the same process to your application.
+
 ### Setup
 
 I made this demo with a classic Ember app `6.2`. [[332ba22](https://github.com/BlueCutOfficial/css-modules-to-scoped-css/commit/332ba223aa8391001cfb16b43efeb9be901a18b5)]
@@ -31,7 +33,67 @@ pnpm add -D ember-scoped-css ember-scoped-css-compat
 
 We don't need any further configuration in this demo, but [there are available options documented](https://github.com/soxhub/ember-scoped-css?tab=readme-ov-file#configuration-1).
 
-Running the install is enough to break our styles. Let's see how to fix.
+### 2. A quick look at the new browser-side CSS
+
+The install is enough to break our styles because ember-scoped-css starts doing things with our component CSS.
+
+Let's run the Ember dev server and visit http://localhost:4200/. From the developer console's inspector, we can inspect any element styles and click on the file name at the top right of the style panel; here, I am looking for "css-modules-to-scoped-css.css" file. This links us to that CSS file content (the tab of the developer console can be different depending on what browser we are using.) The snippet below is a selected extract of what we can see using this demo project:
+
+```css
+@value ember-orange from 'css-modules-to-scoped-css/styles/app';
+
+img.eb52dde03 {
+  max-width: 100%;
+}
+p.eb52dde03 {
+  font-size: 1.25em;
+  margin: 0 0 .75em;
+}
+.welcome-title_eb52dde03 {
+  composes: secondary-title from 'css-modules-to-scoped-css/styles/app';
+  color: ember-orange;
+}
+
+body {
+  color: rgb(28, 30, 36);
+  background: rgb(244, 246, 248);
+  font-family: "Inter var","Inter web",-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
+  font-size: 18px;
+  font-weight: 200;
+  line-height: 1.5;
+  margin: 0 auto;
+  padding: 0;
+}
+
+h1, .title {
+  font-size: 2.5em;
+  font-weight: 200;
+  line-height: 1.2;
+  margin-top: 0;
+}
+```
+
+It's similar to what ember-css-modules was doing; the pattern to make the selectors unique is now `class-name_sha` instead of `_class-name_sha`, but let's not call this a difference.
+
+There are two actual differences however that make the scoping awesomely more intuitive (in my opinion):
+
+- The tag elements (`img`, `p`, `a`...) are no longer global but scoped. When these selectors are used in the component's CSS, then a class `sha` is added to them in the DOM, and the syntax `p.sha` is used CSS-side to scope the style only to the component. This way, tag selectors behave just like any class selector.
+
+- The style that is no defined in components (e.g. `app/styles/app.css`) is no longer transformed with the local selectors. Not a component, not a CSS module, just regular global CSS, which is handy to style the main layout of the app. We no longer need to use `:global` everywhere in `app.css`, we can use it only in components when we want to set a particular style as "global despite being defined at a component level".
+
+### 3. Sort out `:global` pseudo-selectors
+
+Before doing anything else, remove the `:global` pseudo-selector everywhere it's not needed, and eventually add it on component-side if you used to rely on the fact tag selectors were applied globally. It might be an opportunity to clean-up this part and put each style where it belongs.
+
+### 4. Back to `class`
+
+For now, ember-scoped-css generates `sha` classes correctly on tag selectors, but everywhere we use a `local-class`, it results to `class=""` in the DOM. ember-scoped-css doesn't introduce such a special attribute. Instead, we simply use the regular attribute `class`. Putting all `local-class` back to `class` is enough to get ember-scoped-css out of its deep incomprehension, and it now assigns the unique classes correctly to the DOM elements.
+
+### 5. Replace `{{local-class}}` helper and composes
+
+Both of these features were used in ember-css-modules to import a style from an other CSS modules. We could point out the module path and simply import the local class. This approach no longer exist in ember-scoped-css.
+
+What we can do in ember-scoped-css, though, is passing a class name to a component using the `{{scoped-class}}` helper so the corresponding scoped class is created in the CSS module. It's up to us to decide how we want to refactor our usage of composes and `{{local-class}}`.
 
 ## Working with the repository
 

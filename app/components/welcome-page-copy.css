@@ -48,6 +48,9 @@ a:active {
   margin-top: 0;
   color: ember-orange;
 }
+.contact {
+  font-size: 1em;
+}
 .postscript {
   color: rgb(28, 30, 36);
   background: rgb(244, 246, 248);

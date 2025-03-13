@@ -11,11 +11,11 @@ The idea of this walkthrough is to setup a demo project with ember-css-modules a
 
 ### Setup
 
-I made this demo with a classic Ember app `6.2`. [[332ba22](https://github.com/BlueCutOfficial/css-modules-to-scoped-css/commit/332ba223aa8391001cfb16b43efeb9be901a18b5)]
+I made this demo with a classic Ember app `6.2`.
 
-For the setup, I used a copy of the component from [ember-welcome-page](https://github.com/ember-cli/ember-welcome-page). I removed the original `<WelcomePage />` component from the Ember app and replaced it with my `<WelcomePageCopy />`, which is a component defined directly in my application. [[6611e0e](https://github.com/BlueCutOfficial/css-modules-to-scoped-css/commit/6611e0eab76f1e2d96955274eb5d276b20eba776)]
+For the setup, I used a copy of the component from [ember-welcome-page](https://github.com/ember-cli/ember-welcome-page). I removed the original `<WelcomePage />` component from the Ember app and replaced it with my `<WelcomePageCopy />`, which is a component defined directly in my application.
 
-Then I installed the addon ember-css-modules and get the copy of ember-welcome-page CSS to work with it. [[00fcf05](https://github.com/BlueCutOfficial/css-modules-to-scoped-css/commit/00fcf054c6153b2d407ccf0936c97c876fd0e1ff)]
+Then I installed the addon ember-css-modules and get the copy of ember-welcome-page CSS to work with it.
 
 A few more commits introduce ember-css-modules basic features. It doesn't introduce any advanced plugin configuration.
 
@@ -97,9 +97,19 @@ For now, ember-scoped-css generates `sha` classes correctly on tag selectors, bu
 
 All of these features are based on the same idea: given the path to a CSS module, the content of this CSS module can be imported in another CSS module. Phrased this way, the approach doesn't sound that different from importing js modules in our code files, but when coming to CSS, one could say it opens a door to implementations that forget what a CSS module was initially supposed to be. This approach no longer exists in ember-scoped-css.
 
-What we can do in ember-scoped-css, though, is passing a local class from the parent component to the child component using the `{{scoped-class}}` helper, which results in something similar, but the approach is still very different: the scoped class is passed in from the component that defines it (rather than any component can retrieve the scoped class from anywhere as long as the path is known), and since only components have their CSS scoped, you can't use that helper from outside a component (because outside a component we are not in a CSS module with scoped classes to pass in).
+Below or a few leads about what we can use instead.
 
-Whatever the way we decide to refactor this, CSS features can be helpful ([layer](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer), [variables](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascading_variables/Using_CSS_custom_properties)...)
+#### `{{scoped-class}}` helper
+
+In ember-scoped-css, we can pass a local class from the parent component to the child component using the `{{scoped-class}}` helper, which results in something similar to the former `{{local-class}}`, but the approach is still very different: the scoped class is passed in from the component that defines it (rather than any component can retrieve the scoped class from anywhere as long as the path is known), and since only components have their CSS scoped, we can't use that helper from outside a component (because outside a component we are not in a CSS module with scoped classes to pass in).
+
+#### CSS variables
+
+Instead of relying on `@values`, we can try to rework the styles with [CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascading_variables/Using_CSS_custom_properties) (also called CSS variables) directly.
+
+#### Managing layers
+
+Note that, by default, ember-scoped-css emits the components CSS in a [CSS layer](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer) `components`. The name of the layer is [configurable](https://github.com/soxhub/ember-scoped-css/blob/02488a40003923409ffc1ab3fdd1bd6bed7eddaf/README.md#configuration-1), and if you don't use layers at all you can disable this with `layerName: false`. 
 
 ## Working with the repository
 

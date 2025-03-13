@@ -12,3 +12,10 @@ body {
   margin: 0 auto;
   padding: 0;
 }
+
+:global(.subtitle) {
+  font-style: italic;
+  text-align: center;
+  font-size: 1.0em;
+  color: ember-orange;
+}

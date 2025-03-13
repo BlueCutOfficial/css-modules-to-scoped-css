@@ -2,15 +2,13 @@
 https://github.com/ember-cli/ember-welcome-page/blob/main/ember-welcome-page/src/components/welcome-page.css
 used to easily set up this demo. */
 
-@value ember-orange from 'css-modules-to-scoped-css/styles/app';
-
-#ember-welcome-page-id-selector, .main {
+#ember-welcome-page-id-selector {
   padding: 2em;
   border-style: solid;
   border-width: 1px;
 }
 @media (max-width: 700px) {
-  #ember-welcome-page-id-selector, .main {
+  #ember-welcome-page-id-selector {
     padding: 1em;
   }
 }
@@ -18,10 +16,7 @@ used to easily set up this demo. */
 img {
   max-width: 100%;
 }
-p {
-  font-size: 1.25em;
-  margin: 0 0 .75em;
-}
+
 h1 {
   font-size: 2.2em;
   font-weight: 200;
@@ -35,11 +30,11 @@ h1 {
 
 a:link, .guide:link,
 a:visited, .guide:visited {
-  color: ember-orange;
+  color: var(--ember-orange);
 }
 a:hover, guide:hover,
 a:active, guide:active {
-  color: ember-orange;
+  color: var(--ember-orange);
 }
 
 .tomster {
@@ -52,10 +47,6 @@ a:active, guide:active {
   display: flex;
   margin: 0 auto;
   max-width: 960px;
-}
-.welcome > ul > li {
-  padding-bottom: 0.5em;
-  font-size: 1.1em;
 }
 
 .postscript {

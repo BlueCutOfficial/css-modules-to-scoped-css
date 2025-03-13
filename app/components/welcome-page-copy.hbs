@@ -2,19 +2,19 @@
 https://github.com/ember-cli/ember-welcome-page/blob/main/ember-welcome-page/src/components/welcome-page.hbs
 used to easily set up this demo. --}}
 
-<main id="ember-welcome-page-id-selector" local-class="main">
-  <div local-class="columns">
-    <div local-class="tomster">
+<main id="ember-welcome-page-id-selector">
+  <div class="columns">
+    <div class="tomster">
       <img src="images/construction.png" alt="Under construction">
     </div>
-    <div id="welcome-id" local-class="welcome">
+    <div id="welcome-id" class="welcome">
       <h1 id="title">Congratulations, you made it!</h1>
 
-      <Guides />
-      <p>If you run into problems, please join <a local-class="guide" href="https://discord.gg/emberjs">our community's Discord server</a> or visit <a local-class="guide" href="http://discuss.emberjs.com/">our forums</a> for ideas and answers— our community is filled with friendly folks who are willing to help! We enjoy helping new Ember developers get started, and our <a local-class="guide" href="https://emberjs.com/community/">Ember Community</a> is incredibly supportive.</p>
+      <Guides @guideClass={{scoped-class 'guide'}} />
+      <p>If you run into problems, please join <a href="https://discord.gg/emberjs">our community's Discord server</a> or visit <a href="http://discuss.emberjs.com/">our forums</a> for ideas and answers— our community is filled with friendly folks who are willing to help! We enjoy helping new Ember developers get started, and our <a href="https://emberjs.com/community/">Ember Community</a> is incredibly supportive.</p>
     </div>
   </div>
-  <p local-class="postscript">To remove this welcome message, remove the
+  <p class="postscript">To remove this welcome message, remove the
     <code>
       &lt;WelcomePage /&gt;
     </code>

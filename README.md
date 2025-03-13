@@ -6,7 +6,7 @@
 
 - `git clone <repository-url>` (fetch all branches)
 - `cd css-modules-to-scoped-css`
-- `git checkout demo-ember-css-modules`
+- `git checkout demo-ember-scoped-css`
 - `pnpm i`
 
 ### Running / Development

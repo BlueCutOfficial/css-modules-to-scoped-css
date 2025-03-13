@@ -4,20 +4,27 @@ This repository serves as a demo to migrate from [ember-css-modules](https://git
 
 ## Motivation
 
+The Ember community wants to bring Vite to Ember apps. As part of the [Ember Initiative](https://mainmatter.com/ember-initiative/) led by Mainmatter, the Ember Initiative team started an audit of the top 100 addons on [Ember Observer](https://emberobserver.com/). Are these addons compatible with modern Ember apps building with Vite? Do some of them require rework? Or even should they be abandonned in favor of a different solution?
+
+[ember-css-modules](https://github.com/salsify/ember-css-modules) is a widely used addon that brings CSS modules to classic Ember apps. However, it was identified as an addon that should be replaced with a different solution before moving to `@embroider/vite`. The problem is that it relies too much on classic-world semantic, and new options came up to bring CSS modules to modern Ember apps.
+
+This repository introduces one of these options: [ember-scoped-css](https://github.com/soxhub/ember-scoped-css). It gives an example of how to migrate a simple application from ember-css-modules to ember-scoped-css. Though it remains rather minimalist (it doesn't introduce any advanced plugin configuration that you can use with ember-css-modules), it tries to show an overwiew of ember-css-modules features and how you can achieve the same with ember-scoped-css.
+
+## Diff
+
+The `6.2` classic app in this repository is inspired by [ember-welcome-page](https://github.com/ember-cli/ember-welcome-page). For the setup, a `<WelcomePageCopy />` component has been implemented directly in the application. Starting from there, I introduced changes that allow me to demo ember-css-modules features.
+
+Then I migrated from ember-css-modules to ember-scoped-css: [**Click here to see the diff**](https://github.com/BlueCutOfficial/css-modules-to-scoped-css/compare/demo-ember-css-modules..demo-ember-scoped-css?diff=split&w=)
+
+![Screenshot of the demo app, inspired from ember-welcome-page component](./demo-screenshot.png)
+
+In the sections below, we will go through an overview of the differences between both solutions. But first, let's see the main idea behind "CSS isolation" that both addons implement more or less the same way. 
 
 ## Walkthrough
 
+// TO REWORK
+
 The idea of this walkthrough is to setup a demo project with ember-css-modules and migrate it to ember-scoped-css. You can use the steps below and the commit stack of the repo to apply the same process to your application.
-
-### Setup
-
-I made this demo with a classic Ember app `6.2`.
-
-For the setup, I used a copy of the component from [ember-welcome-page](https://github.com/ember-cli/ember-welcome-page). I removed the original `<WelcomePage />` component from the Ember app and replaced it with my `<WelcomePageCopy />`, which is a component defined directly in my application.
-
-Then I installed the addon ember-css-modules and get the copy of ember-welcome-page CSS to work with it.
-
-A few more commits introduce ember-css-modules basic features. It doesn't introduce any advanced plugin configuration.
 
 Note that ember-css-modules relies on local classes, the styles that apply to tag elements like `body`, `div`, `p`... remain global even if they are defined in the component's CSS. If you need a better understanding of this subtlety, you can have a look at the article [Cookbook: migrate an existing Ember app to CSS modules](https://mainmatter.com/blog/2022/08/24/cookbook-ember-app-to-css-modules/), which is quite old but still relevant to get explanations on that field.
 

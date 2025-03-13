@@ -13,7 +13,12 @@ body {
   padding: 0;
 }
 
-:global(.subtitle) {
+p {
+  font-size: 1.25em;
+  margin: 0 0 .75em;
+}
+
+.subtitle {
   font-style: italic;
   text-align: center;
   font-size: 1.0em;

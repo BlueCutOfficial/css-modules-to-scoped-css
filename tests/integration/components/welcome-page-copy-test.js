@@ -10,8 +10,8 @@ module('Integration | Component | welcome-page-copy', function (hooks) {
 
   test('it renders', async function (assert) {
     await render(hbs`<WelcomePageCopy />`);
-    assert.dom('#title').includesText('Congratulations, you made it!');
-    assert.dom('#title').hasAttribute('class', styles['welcome-title']);
+    assert.dom('#welcome-id').includesText('Congratulations, you made it!');
+    assert.dom('#welcome-id').hasAttribute('class', styles['welcome']);
     assert.equal(
       styles['ember-orange'],
       'rgb(255, 92, 68)',

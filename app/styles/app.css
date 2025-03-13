@@ -10,12 +10,19 @@ body {
   font-weight: 200;
   line-height: 1.5;
   margin: 0 auto;
-  padding: 0;
+  padding: 10px;
 }
 
-:global(.subtitle) {
-  font-style: italic;
+a:link,
+a:visited {
+  color: rgb(28, 30, 36);
+}
+a:hover,
+a:active {
+  color: rgb(28, 30, 36);
+}
+
+:global(.about) {
   text-align: center;
   font-size: 1.0em;
-  color: ember-orange;
 }

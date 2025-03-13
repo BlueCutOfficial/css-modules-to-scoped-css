@@ -89,11 +89,17 @@ Before doing anything else, remove the `:global` pseudo-selector everywhere it's
 
 For now, ember-scoped-css generates `sha` classes correctly on tag selectors, but everywhere we use a `local-class`, it results to `class=""` in the DOM. ember-scoped-css doesn't introduce such a special attribute. Instead, we simply use the regular attribute `class`. Putting all `local-class` back to `class` is enough to get ember-scoped-css out of its deep incomprehension, and it now assigns the unique classes correctly to the DOM elements.
 
-### 5. Replace `{{local-class}}` helper and composes
+### 5. Replace emmber-css-modules specific features
 
-Both of these features were used in ember-css-modules to import a style from an other CSS modules. We could point out the module path and simply import the local class. This approach no longer exist in ember-scoped-css.
+- `{{local-class}}` helper was used to import a local class from another CSS module directly in the template.
+- composes was used to get a local class inherit from another local class that could be located in another CSS module.
+- `@value` was used to import a CSS variable that could be located in another CSS module. 
 
-What we can do in ember-scoped-css, though, is passing a class name to a component using the `{{scoped-class}}` helper so the corresponding scoped class is created in the CSS module. It's up to us to decide how we want to refactor our usage of composes and `{{local-class}}`.
+All of these features are based on the same idea: given the path to a CSS module, the content of this CSS module can be imported in another CSS module. Phrased this way, the approach doesn't sound that different from importing js modules in our code files, but when coming to CSS, one could say it opens a door to implementations that forget what a CSS module was initially supposed to be. This approach no longer exists in ember-scoped-css.
+
+What we can do in ember-scoped-css, though, is passing a local class from the parent component to the child component using the `{{scoped-class}}` helper, which results in something similar, but the approach is still very different: the scoped class is passed in from the component that defines it (rather than any component can retrieve the scoped class from anywhere as long as the path is known), and since only components have their CSS scoped, you can't use that helper from outside a component (because outside a component we are not in a CSS module with scoped classes to pass in).
+
+Whatever the way we decide to refactor this, CSS features can be helpful ([layer](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer), [variables](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascading_variables/Using_CSS_custom_properties)...)
 
 ## Working with the repository
 

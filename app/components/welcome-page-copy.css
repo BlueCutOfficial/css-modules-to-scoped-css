@@ -2,8 +2,6 @@
 https://github.com/ember-cli/ember-welcome-page/blob/main/ember-welcome-page/src/components/welcome-page.css
 used to easily set up this demo. */
 
-@value ember-orange from 'css-modules-to-scoped-css/styles/app';
-
 #ember-welcome-page-id-selector {
   height: 100vh;
   padding: 2em;
@@ -19,11 +17,11 @@ img {
 }
 a:link,
 a:visited {
-  color: ember-orange;
+  color: var(--ember-orange);
 }
 a:hover,
 a:active {
-  color: ember-orange;
+  color: var(--ember-orange);
 }
 .tomster {
   flex: 2;

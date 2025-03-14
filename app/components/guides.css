@@ -1,4 +1,8 @@
 .guide {
-  composes: guide from 'css-modules-to-scoped-css/components/welcome-page-copy.css';
   font-weight: bold;
+}
+
+ul > li {
+  padding-bottom: 0.5em;
+  font-size: 1.1em;
 }

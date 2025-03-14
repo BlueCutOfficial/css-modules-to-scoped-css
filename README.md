@@ -12,25 +12,39 @@ This repository introduces one of these options: [ember-scoped-css](https://gith
 
 ### I want to start using CSS modules in my Ember Vite app, should I use ember-scoped-css?
 
-Not necessarily, ember-scoped-css is not the only option. You could also follow [Vite documentation](https://vite.dev/guide/features#css-modules) directly or look into what the Ember community came up with. The advantage of ember-scoped-css is that it's quite similar to ember-css-modules in the way to structure the implementation, so it's a migration path we recommend to unblock your upgrade to Vite without changing drastically how your CSS is structured.
+No, not necessarily; ember-scoped-css is not the only option. You could also follow [Vite documentation](https://vite.dev/guide/features#css-modules) directly or look into what the Ember community came up with. The advantage of ember-scoped-css is that it's quite similar to ember-css-modules in the way the implementation is structured, so it's a migration path we recommend to unblock your upgrade to Vite without changing drastically all your CSS.
 
-## Diff
+## How to use this repo
+
+### A demo inspired by ember-welcome-page
 
 The `6.2` classic app in this repository is inspired by [ember-welcome-page](https://github.com/ember-cli/ember-welcome-page). For the setup, a `<WelcomePageCopy />` component has been implemented directly in the application. Starting from there, I introduced changes that allow me to demo ember-css-modules features.
 
-Then I migrated from ember-css-modules to ember-scoped-css:
+![Screenshot of the demo app, inspired from ember-welcome-page component](./demo-screenshot.png)
+
+### View the before/after
+
+Starting from the version using ember-css-modules, I migrated to ember-scoped-css:
 
 ✨ --- [**Click here to see the diff**](https://github.com/BlueCutOfficial/css-modules-to-scoped-css/compare/demo-ember-css-modules..demo-ember-scoped-css?diff=split&w=) --- ✨
 
-![Screenshot of the demo app, inspired from ember-welcome-page component](./demo-screenshot.png)
+In the "Walkthrough the diff" below, we will go through an overview of the differences between both solutions.
 
-In the sections below, we will go through an overview of the differences between both solutions. But first, let's see the main idea behind "CSS isolation" that both addons implement more or less the same way. 
+### Try it yourself
+
+To have a better understanding of the "Walkthrough the diff" below, you might feel the need to see the whole resulting CSS and even experiment things in the browser. To help you doing this as easily as possible, this repository contains two folders `dist_ember-css-modules` and `dist_ember-scoped-css` that each correspond to a dev build of each diff branch.
+
+- `git clone <this repository URL>`
+- In a terminal, run `npx http-server dist_ember-css-modules`
+- In another terminal, run `npx http-server dist_ember-scoped-css`
+
+By visiting the the ruturned URLs (http://127.0.0.1:8080 and http://127.0.0.1:8081 by default), you can now view both dev builds side by side and inspect the CSS.
+
+But before digging into the differences, let's see the main idea behind "CSS isolation" that both addons implement more or less the same way.
 
 ## CSS isolation by class rename
 
-If you are already aware of what "CSS isolation by class rename" means technically, you can skip this section.
-
-ember-css-modules and ember-scoped-css are different, but they both work following the same general idea: "CSS isolation by class rename". To understand this approach, you can use two resources:
+ember-css-modules and ember-scoped-css both allow you to isolate your components styles by creating a CSS file alongside you component template. They are different, but they both work following the same general idea: "CSS isolation by class rename". To understand this approach, you can use two resources:
 
 - The document [CSS Isolation](https://github.com/soxhub/ember-scoped-css/blob/main/docs/css-isolation.md) from ember-scoped-css repository.
 - The article [Cookbook: migrate an existing Ember app to CSS modules](https://mainmatter.com/blog/2022/08/24/cookbook-ember-app-to-css-modules/) is a walkthrough to install ember-css-modules in an Ember application that used initially one global CSS file. It presents the introduction of CSS modules with a more "practical" angle that allow you to see clearly the "without / with" CSS modules.
@@ -43,9 +57,9 @@ There are a few major differences though that will force you to rework your code
 
 ### 1. `local-class` _versus_ `class`
 
-ember-css-modules introduces the attribute `local-class` has a marker that identifies scoped classes. In a template, it's your responsability as a developer to assign to `local-class` the scoped classes that you defined in the correcponding CSS module, and to assign to `class` the global classes.
+ember-css-modules introduces the attribute `local-class` has a marker that identifies scoped classes. In a template, it's your responsability as a developer to assign to `local-class` the scoped classes that you defined in the corresponding CSS module, and to assign to `class` the global classes.
 
-In ember-scoped-css, you only use the attribute `class`. // TOTRY: assign a global class defined in app.css in a component
+In ember-scoped-css, you only use the attribute `class`. If the class name is defined in the CSS module, it will be transformed, else it just stays what it is and the global styles apply.
 
 ### 2. Tag selectors: global _versus_ local
 
@@ -53,132 +67,88 @@ ember-css-modules is designed to rename class selectors. It doesn't rename tag s
 
 ember-scoped-css is a bit more intuitive on that field. The tag selectors are no longer global but scoped. When these selectors are used in the component's CSS, a class named after the `sha` is added to the corresponding DOM elements, and the syntax `selector.sha` is used CSS-side to scope the style only to the component. This way, tag selectors behave just like any class selector, which can bring clearness to the CSS module.
 
-### 3. Id selectors: weird _versus_ global
-
-### 4. Each CSS file is a CSS module _versus_ each component has its CSS module
-
-### 5. Importing styles and properties _versus_ parent passes in to child
-
-### 6. Classic cascading _versus_ providing layers
-
-
-TODO:
-
-- Fix the main paragraph margin
-- Finalize README
-
-
-
-### A quick look at the new browser-side CSS
-
-The install is enough to break our styles because ember-scoped-css starts doing things with our component CSS.
-
-Let's run the Ember dev server and visit http://localhost:4200/. From the developer console's inspector, we can inspect any element styles and click on the file name at the top right of the style panel; here, I am looking for "css-modules-to-scoped-css.css" file. This links us to that CSS file content (the tab of the developer console can be different depending on what browser we are using.) The snippet below is a selected extract of what we can see using this demo project:
+```html
+<!-- Final DOM -->
+<ul class="e9accf110">
+  <li class="e9accf110"></li>
+</ul>
+```
 
 ```css
-@value ember-orange from 'css-modules-to-scoped-css/styles/app';
-
-img.eb52dde03 {
-  max-width: 100%;
-}
-p.eb52dde03 {
-  font-size: 1.25em;
-  margin: 0 0 .75em;
-}
-.welcome-title_eb52dde03 {
-  composes: secondary-title from 'css-modules-to-scoped-css/styles/app';
-  color: ember-orange;
-}
-
-body {
-  color: rgb(28, 30, 36);
-  background: rgb(244, 246, 248);
-  font-family: "Inter var","Inter web",-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
-  font-size: 18px;
-  font-weight: 200;
-  line-height: 1.5;
-  margin: 0 auto;
-  padding: 0;
-}
-
-h1, .title {
-  font-size: 2.5em;
-  font-weight: 200;
-  line-height: 1.2;
-  margin-top: 0;
+/* Built CSS */
+ul.e9accf110 > li.e9accf110 {
+  padding-bottom: 0.5em;
+  font-size: 1.1em;
 }
 ```
 
-It's similar to what ember-css-modules was doing; the pattern to make the selectors unique is now `class-name_sha` instead of `_class-name_sha`, but let's not call this a difference.
+### 3. Id selectors: weird _versus_ global
 
-There are two actual differences however that make the scoping awesomely more intuitive (in my opinion):
+ember-css-modules behavior with ids is a bit weird. It doesn't rename elements ids in the DOM, but it transforms them in the CSS. As result, if you use HTML ids to style the component, the styles are not applied.
 
+```html
+<!-- Final DOM -->
+<main id="ember-welcome-page-id-selector"></main>
+```
 
-- The style that is no defined in components (e.g. `app/styles/app.css`) is no longer transformed with the local selectors. Not a component, not a CSS module, just regular global CSS, which is handy to style the main layout of the app. We no longer need to use `:global` everywhere in `app.css`, we can use it only in components when we want to set a particular style as "global despite being defined at a component level".
+```css
+/* Built CSS */
+#_ember-welcome-page-id-selector_f42zxn {
+  padding: 2em;
+  border-style: solid;
+  border-width: 1px;
+}
+```
 
-### 3. Sort out `:global` pseudo-selectors
+ember-scoped-css, on the other hand, tries to be a bit smarter on that field. It considers the following HTML principle: the HTML id should be unique in the document. Therefore, ember-scoped-css doesn't transform ids at all and the style remains global.
 
-Before doing anything else, remove the `:global` pseudo-selector everywhere it's not needed, and eventually add it on component-side if you used to rely on the fact tag selectors were applied globally. It might be an opportunity to clean-up this part and put each style where it belongs.
+### 4. Each CSS file is a CSS module _versus_ each component has its CSS module
 
-### 4. Back to `class`
+In ember-css-modules, each CSS file in your `app/styles/` folder is considered a CSS module, and all the classes in there are scoped. This approach allows you to scope the CSS of route controllers. For instance, the local CSS of your `application.hbs` is expected to be defined in `app/styles/application.css`. The class names transform also applies to `app/styles/app.css`. Each time you want to apply a style globally using a class name, you need to use `:global` pseudo-selector.
 
-For now, ember-scoped-css generates `sha` classes correctly on tag selectors, but everywhere we use a `local-class`, it results to `class=""` in the DOM. ember-scoped-css doesn't introduce such a special attribute. Instead, we simply use the regular attribute `class`. Putting all `local-class` back to `class` is enough to get ember-scoped-css out of its deep incomprehension, and it now assigns the unique classes correctly to the DOM elements.
+ember-scoped-css is more... "scoped". The idea of this addon is to scope your components CSS by creating a `component.css` alongside a `component.hbs`. On the other hand, `app/styles/app.css` contains global CSS, and if you have other global CSS files they should be explicitly imported.
 
-### 5. Replace emmber-css-modules specific features
+### 5. Importing styles and properties _versus_ parent passes in to child
 
-- `{{local-class}}` helper was used to import a local class from another CSS module directly in the template.
-- composes was used to get a local class inherit from another local class that could be located in another CSS module.
-- `@value` was used to import a CSS variable that could be located in another CSS module. 
+#### ember-css-modules specific features
 
-All of these features are based on the same idea: given the path to a CSS module, the content of this CSS module can be imported in another CSS module. Phrased this way, the approach doesn't sound that different from importing js modules in our code files, but when coming to CSS, one could say it opens a door to implementations that forget what a CSS module was initially supposed to be. This approach no longer exists in ember-scoped-css.
+ember-css-modules has three specific features:
 
-Below or a few leads about what we can use instead.
+`{{local-class}}` helper imports a local class from another CSS module directly in the template.
 
-#### `{{scoped-class}}` helper
+```hbs
+<p class="{{local-class 'postscript' from='css-modules-to-scoped-css/components/welcome-page-copy.css'}}">
+```
 
-In ember-scoped-css, we can pass a local class from the parent component to the child component using the `{{scoped-class}}` helper, which results in something similar to the former `{{local-class}}`, but the approach is still very different: the scoped class is passed in from the component that defines it (rather than any component can retrieve the scoped class from anywhere as long as the path is known), and since only components have their CSS scoped, we can't use that helper from outside a component (because outside a component we are not in a CSS module with scoped classes to pass in).
+`composes` gets a local class inherit from another local class that could be located in another CSS module.
 
-#### CSS variables
+```css
+.guide {
+  composes: guide from 'css-modules-to-scoped-css/components/welcome-page-copy.css';
+  font-weight: bold;
+}
+```
 
-Instead of relying on `@values`, we can try to rework the styles with [CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascading_variables/Using_CSS_custom_properties) (also called CSS variables) directly.
+`@value` imports a CSS variable that could be located in another CSS module.
 
-#### Managing layers
+```css 
+/* app/styles/app.css */
+@value ember-orange: rgb(255, 92, 68);
 
-Note that, by default, ember-scoped-css emits the components CSS in a [CSS layer](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer) `components`. The name of the layer is [configurable](https://github.com/soxhub/ember-scoped-css/blob/02488a40003923409ffc1ab3fdd1bd6bed7eddaf/README.md#configuration-1), and if you don't use layers at all you can disable this with `layerName: false`. 
+/* app/components/welcome-page-copy.css */
+@value ember-orange from 'css-modules-to-scoped-css/styles/app';
+```
 
-## Working with the repository
+All of these features are based on the same idea: given the path to a CSS module, the content of this CSS module can be imported in another CSS module. Phrased this way, the approach sounds inspired from importing js modules in our code files, but applied to CSS with a very specific semantic.
 
-### Installation
+#### Alternatives in ember-scoped-css
 
-- `git clone <repository-url>`
-- `cd css-modules-to-scoped-css`
-- `npm install`
+`{{scoped-class}}` helper we be used to pass a local class from the parent component to the child component, which results in something similar to the former `{{local-class}}`. The approach is still very different: the scoped class is passed in from the component that defines it (rather than any component can retrieve the scoped class from anywhere given the path), and since only components have their CSS scoped, we can't use that helper from outside a component (because outside a component we are not in a CSS module with scoped classes to pass in).
 
-### Running / Development
+CSS variables: instead of relying on `@values`, we can try to rework the styles with [CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascading_variables/Using_CSS_custom_properties) (also called CSS variables) directly.
 
-- `pnpm start`
-- Visit your app at [http://localhost:4200](http://localhost:4200).
-- Visit your tests at [http://localhost:4200/tests](http://localhost:4200/tests).
+### 6. Classic cascading _versus_ providing layers
 
-### Running Tests
+ember-css-modules transforms the class names but doesn't take any initiative such as emitting layers.
 
-- `pnpm test`
-- `pnpm test:ember -- --server`
-
-### Linting
-
-- `pnpm lint`
-- `pnpm lint:fix`
-
-### Building
-
-- `pnpm exec ember build` (development)
-- `pnpm build` (production)
-
-### Further Reading / Useful Links
-
-- [ember.js](https://emberjs.com/)
-- [ember-cli](https://cli.emberjs.com/release/)
-- Development Browser Extensions
-  - [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
-  - [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
+By default, ember-scoped-css emits the components CSS in a [CSS layer](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer) `components`. The name of the layer is [configurable](https://github.com/soxhub/ember-scoped-css/blob/02488a40003923409ffc1ab3fdd1bd6bed7eddaf/README.md#configuration-1), and if you don't use layers at all you can disable this with `layerName: false`.

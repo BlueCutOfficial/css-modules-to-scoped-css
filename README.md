@@ -18,17 +18,30 @@ No, not necessarily; ember-scoped-css is not the only option. You could also fol
 
 ### A demo inspired by ember-welcome-page
 
-The `6.2` classic app in this repository is inspired by [ember-welcome-page](https://github.com/ember-cli/ember-welcome-page). For the setup, a `<WelcomePageCopy />` component has been implemented directly in the application. Starting from there, I introduced changes that allow me to demo ember-css-modules features.
+The `6.2` classic app in this repository is inspired by [ember-welcome-page](https://github.com/ember-cli/ember-welcome-page).
+
+- For the setup, a `<WelcomePageCopy />` component has been implemented directly in the application. 
+- Starting from there, I introduced changes that allow me to demo ember-css-modules features. 
+- Then, from the version using ember-css-modules, I migrated to ember-scoped-css. 
+- Then, from the version using ember-scoped-css, I migrated to a Vite build.
 
 ![Screenshot of the demo app, inspired from ember-welcome-page component](./demo-screenshot.png)
 
 ### View the before/after
 
-Starting from the version using ember-css-modules, I migrated to ember-scoped-css:
+This repository contains several branches that can be compared as a before/after diff views.
 
-✨ --- [**Click here to see the diff**](https://github.com/BlueCutOfficial/css-modules-to-scoped-css/compare/demo-ember-css-modules..demo-ember-scoped-css?diff=split&w=) --- ✨
+#### 1. From ember-css-modules to ember-scoped-css 
 
-In the "Walkthrough the diff" below, we will go through an overview of the differences between both solutions.
+✨ [**Click here to see the diff**](https://github.com/BlueCutOfficial/css-modules-to-scoped-css/compare/demo-ember-css-modules..demo-ember-scoped-css) ✨ or look at the [PR for additonnal comments](https://github.com/BlueCutOfficial/css-modules-to-scoped-css/pull/1).
+
+In the "Walkthrough the diff" section below, we will go through an overview of the differences between both solutions.
+
+#### 2. From Classic to Vite once ember-scoped-css is used 
+
+✨ [**Click here to see the diff**](https://github.com/BlueCutOfficial/css-modules-to-scoped-css/compare/demo-ember-scoped-css..demo-ember-scoped-css-vite) ✨ or look at the [PR for additonnal comments](https://github.com/BlueCutOfficial/css-modules-to-scoped-css/pull/2).
+
+Once your classic app uses ember-scoped-css without style regressions, your app is one step closer to Vite. If you don't have any other blocker to handle, then you can start building with Vite.
 
 ### Try it yourself
 

@@ -12,16 +12,21 @@
       @layer utilities, scoped-components;
     </style>
 
-    <link integrity="" rel="stylesheet" href="{{rootURL}}assets/vendor.css">
-    <link integrity="" rel="stylesheet" href="{{rootURL}}assets/css-modules-to-scoped-css.css">
+    <link integrity="" rel="stylesheet" href="/@embroider/virtual/vendor.css">
+    <link integrity="" rel="stylesheet" href="/@embroider/virtual/app.css">
 
     {{content-for "head-footer"}}
   </head>
   <body>
     {{content-for "body"}}
 
-    <script src="{{rootURL}}assets/vendor.js"></script>
-    <script src="{{rootURL}}assets/css-modules-to-scoped-css.js"></script>
+    <script src="/@embroider/virtual/vendor.js"></script>
+    <script type="module">
+      import Application from './app/app';
+      import environment from './app/config/environment';
+
+      Application.create(environment.APP);
+    </script>
 
     {{content-for "body-footer"}}
   </body>

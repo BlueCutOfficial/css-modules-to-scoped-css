@@ -1,4 +1,0 @@
-.guide {
-  composes: guide from 'css-modules-to-scoped-css/components/welcome-page-copy.css';
-  font-weight: bold;
-}

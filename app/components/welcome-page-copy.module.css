@@ -2,7 +2,7 @@
 https://github.com/ember-cli/ember-welcome-page/blob/main/ember-welcome-page/src/components/welcome-page.css
 used to easily set up this demo. */
 
-@value ember-orange from 'css-modules-to-scoped-css/styles/app';
+@value ember-orange from 'css-modules-to-scoped-css/styles/app.module.css';
 
 #ember-welcome-page-id-selector, .main {
   padding: 2em;

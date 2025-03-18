@@ -48,17 +48,15 @@
   0; //eaimeta@70e063a35619d71f0,"@ember/component/template-only",0,"@ember/template-factory",0,"@ember/component"eaimeta@70e063a35619d71f
   const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
-    <div>
     <p class="postscript">
-      To migrate from ember-css-module to ember-css-scoped, you will have to rename <code>local-class</code> to <code>class</code>, 
-      and a couple of other things describes in the README.
-    </p>
-  </div>
+    To migrate from ember-css-module to ember-css-scoped, you will have to rename <code>local-class</code> to <code>class</code>, 
+    and a couple of other things describes in the README.
+  </p>
   
   */
   {
-    "id": "u6rZiI5d",
-    "block": "[[[10,0],[12],[1,\"\\n  \"],[10,2],[14,0,\"postscript_e05f79fac\"],[12],[1,\"\\n    To migrate from ember-css-module to ember-css-scoped, you will have to rename \"],[10,\"code\"],[14,0,\"e05f79fac\"],[12],[1,\"local-class\"],[13],[1,\" to \"],[10,\"code\"],[14,0,\"e05f79fac\"],[12],[1,\"class\"],[13],[1,\", \\n    and a couple of other things describes in the README.\\n  \"],[13],[1,\"\\n\"],[13],[1,\"\\n\"]],[],false,[\"div\",\"p\",\"code\"]]",
+    "id": "iLqleygY",
+    "block": "[[[10,2],[14,0,\"postscript_e05f79fac\"],[12],[1,\"\\n  To migrate from ember-css-module to ember-css-scoped, you will have to rename \"],[10,\"code\"],[14,0,\"e05f79fac\"],[12],[1,\"local-class\"],[13],[1,\" to \"],[10,\"code\"],[14,0,\"e05f79fac\"],[12],[1,\"class\"],[13],[1,\", \\n  and a couple of other things describes in the README.\\n\"],[13],[1,\"\\n\"]],[],false,[\"p\",\"code\"]]",
     "moduleName": "css-modules-to-scoped-css/components/footer.hbs",
     "isStrictMode": false
   });
@@ -74,17 +72,15 @@
   0; //eaimeta@70e063a35619d71f0,"@ember/component/template-only",0,"@ember/template-factory",0,"@ember/component"eaimeta@70e063a35619d71f
   const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
-    <div>
     <p>You&rsquo;ve officially spun up your Ember app. You&rsquo;ve got one more decision to make: what do you want to do next? We&rsquo;d suggest one of the following to help you get going:</p>
-    <ul>
-      <li><a class="{{@guideClass}} guide" href="https://guides.emberjs.com/release/getting-started/quick-start/">Quick Start</a> - a quick introduction to how Ember works. Learn about defining your first route, writing a UI component and deploying your application.</li>
-      <li><a class="{{@guideClass}} guide" href="https://guides.emberjs.com/release/tutorial/">Tutorial</a> - this is our more thorough, hands-on intro to Ember. Your crash course in Ember philosophy, background and some in-depth discussion of how things work (and why they work the way they do).</li>
-    </ul>
-  </div>
+  <ul>
+    <li><a class="{{@guideClass}} guide" href="https://guides.emberjs.com/release/getting-started/quick-start/">Quick Start</a> - a quick introduction to how Ember works. Learn about defining your first route, writing a UI component and deploying your application.</li>
+    <li><a class="{{@guideClass}} guide" href="https://guides.emberjs.com/release/tutorial/">Tutorial</a> - this is our more thorough, hands-on intro to Ember. Your crash course in Ember philosophy, background and some in-depth discussion of how things work (and why they work the way they do).</li>
+  </ul>
   */
   {
-    "id": "70r5Qm/K",
-    "block": "[[[10,0],[12],[1,\"\\n  \"],[10,2],[12],[1,\"You’ve officially spun up your Ember app. You’ve got one more decision to make: what do you want to do next? We’d suggest one of the following to help you get going:\"],[13],[1,\"\\n  \"],[10,\"ul\"],[14,0,\"e9accf110\"],[12],[1,\"\\n    \"],[10,\"li\"],[14,0,\"e9accf110\"],[12],[10,3],[15,0,[29,[[30,1],\" guide_e9accf110\"]]],[14,6,\"https://guides.emberjs.com/release/getting-started/quick-start/\"],[12],[1,\"Quick Start\"],[13],[1,\" - a quick introduction to how Ember works. Learn about defining your first route, writing a UI component and deploying your application.\"],[13],[1,\"\\n    \"],[10,\"li\"],[14,0,\"e9accf110\"],[12],[10,3],[15,0,[29,[[30,1],\" guide_e9accf110\"]]],[14,6,\"https://guides.emberjs.com/release/tutorial/\"],[12],[1,\"Tutorial\"],[13],[1,\" - this is our more thorough, hands-on intro to Ember. Your crash course in Ember philosophy, background and some in-depth discussion of how things work (and why they work the way they do).\"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[\"@guideClass\"],false,[\"div\",\"p\",\"ul\",\"li\",\"a\"]]",
+    "id": "zdAhUB+J",
+    "block": "[[[10,2],[12],[1,\"You’ve officially spun up your Ember app. You’ve got one more decision to make: what do you want to do next? We’d suggest one of the following to help you get going:\"],[13],[1,\"\\n\"],[10,\"ul\"],[14,0,\"e9accf110\"],[12],[1,\"\\n  \"],[10,\"li\"],[14,0,\"e9accf110\"],[12],[10,3],[15,0,[29,[[30,1],\" guide_e9accf110\"]]],[14,6,\"https://guides.emberjs.com/release/getting-started/quick-start/\"],[12],[1,\"Quick Start\"],[13],[1,\" - a quick introduction to how Ember works. Learn about defining your first route, writing a UI component and deploying your application.\"],[13],[1,\"\\n  \"],[10,\"li\"],[14,0,\"e9accf110\"],[12],[10,3],[15,0,[29,[[30,1],\" guide_e9accf110\"]]],[14,6,\"https://guides.emberjs.com/release/tutorial/\"],[12],[1,\"Tutorial\"],[13],[1,\" - this is our more thorough, hands-on intro to Ember. Your crash course in Ember philosophy, background and some in-depth discussion of how things work (and why they work the way they do).\"],[13],[1,\"\\n\"],[13]],[\"@guideClass\"],false,[\"p\",\"ul\",\"li\",\"a\"]]",
     "moduleName": "css-modules-to-scoped-css/components/guides.hbs",
     "isStrictMode": false
   });
@@ -129,8 +125,8 @@
   </main>
   */
   {
-    "id": "rsxbNFcZ",
-    "block": "[[[1,\"\\n\"],[10,\"main\"],[14,1,\"ember-welcome-page-id-selector\"],[12],[1,\"\\n  \"],[10,0],[14,0,\"columns_eb52dde03\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"tomster_eb52dde03\"],[12],[1,\"\\n      \"],[10,\"img\"],[14,\"src\",\"images/construction.png\"],[14,\"alt\",\"Under construction\"],[14,0,\"eb52dde03\"],[12],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,1,\"welcome-id\"],[14,0,\"welcome_eb52dde03\"],[12],[1,\"\\n      \"],[10,\"h1\"],[14,1,\"title\"],[14,0,\"eb52dde03\"],[12],[1,\"Congratulations, you made it!\"],[13],[1,\"\\n\\n      \"],[8,[39,4],null,[[\"@guideClass\"],[\"guide_eb52dde03\"]],null],[1,\"\\n      \"],[10,2],[14,0,\"eb52dde03\"],[12],[1,\"If you run into problems, please join \"],[10,3],[14,6,\"https://discord.gg/emberjs\"],[14,0,\"eb52dde03\"],[12],[1,\"our community's Discord server\"],[13],[1,\" or visit \"],[10,3],[14,6,\"http://discuss.emberjs.com/\"],[14,0,\"eb52dde03\"],[12],[1,\"our forums\"],[13],[1,\" for ideas and answers— our community is filled with friendly folks who are willing to help! We enjoy helping new Ember developers get started, and our \"],[10,3],[14,6,\"https://emberjs.com/community/\"],[14,0,\"eb52dde03\"],[12],[1,\"Ember Community\"],[13],[1,\" is incredibly supportive.\"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n  \"],[10,2],[14,0,\"postscript_eb52dde03 eb52dde03\"],[12],[1,\"To remove this welcome message, remove the\\n    \"],[10,\"code\"],[14,0,\"eb52dde03\"],[12],[1,\"\\n      <WelcomePage />\\n    \"],[13],[1,\"\\n    component from your\\n    \"],[10,\"code\"],[14,0,\"eb52dde03\"],[12],[1,\"\\n      app/templates/application.hbs\\n    \"],[13],[1,\"\\n    file and save it...you'll see this page update soon after!\\n  \"],[13],[1,\"\\n\"],[13]],[],false,[\"main\",\"div\",\"img\",\"h1\",\"guides\",\"p\",\"a\",\"code\"]]",
+    "id": "T45WnLnb",
+    "block": "[[[1,\"\\n\"],[10,\"main\"],[14,1,\"ember-welcome-page-id-selector\"],[12],[1,\"\\n  \"],[10,0],[14,0,\"columns_eb52dde03\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"tomster_eb52dde03\"],[12],[1,\"\\n      \"],[10,\"img\"],[14,\"src\",\"images/construction.png\"],[14,\"alt\",\"Under construction\"],[14,0,\"eb52dde03\"],[12],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,1,\"welcome-id\"],[14,0,\"welcome_eb52dde03\"],[12],[1,\"\\n      \"],[10,\"h1\"],[14,1,\"title\"],[14,0,\"eb52dde03\"],[12],[1,\"Congratulations, you made it!\"],[13],[1,\"\\n\\n      \"],[8,[39,4],null,[[\"@guideClass\"],[\"guide_eb52dde03\"]],null],[1,\"\\n      \"],[10,2],[12],[1,\"If you run into problems, please join \"],[10,3],[14,6,\"https://discord.gg/emberjs\"],[14,0,\"eb52dde03\"],[12],[1,\"our community's Discord server\"],[13],[1,\" or visit \"],[10,3],[14,6,\"http://discuss.emberjs.com/\"],[14,0,\"eb52dde03\"],[12],[1,\"our forums\"],[13],[1,\" for ideas and answers— our community is filled with friendly folks who are willing to help! We enjoy helping new Ember developers get started, and our \"],[10,3],[14,6,\"https://emberjs.com/community/\"],[14,0,\"eb52dde03\"],[12],[1,\"Ember Community\"],[13],[1,\" is incredibly supportive.\"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n  \"],[10,2],[14,0,\"postscript_eb52dde03\"],[12],[1,\"To remove this welcome message, remove the\\n    \"],[10,\"code\"],[14,0,\"eb52dde03\"],[12],[1,\"\\n      <WelcomePage />\\n    \"],[13],[1,\"\\n    component from your\\n    \"],[10,\"code\"],[14,0,\"eb52dde03\"],[12],[1,\"\\n      app/templates/application.hbs\\n    \"],[13],[1,\"\\n    file and save it...you'll see this page update soon after!\\n  \"],[13],[1,\"\\n\"],[13]],[],false,[\"main\",\"div\",\"img\",\"h1\",\"guides\",\"p\",\"a\",\"code\"]]",
     "moduleName": "css-modules-to-scoped-css/components/welcome-page-copy.hbs",
     "isStrictMode": false
   });
@@ -450,7 +446,7 @@ catch(err) {
 
 ;
           if (!runningTests) {
-            require("css-modules-to-scoped-css/app")["default"].create({"name":"css-modules-to-scoped-css","version":"0.0.0+41454c75"});
+            require("css-modules-to-scoped-css/app")["default"].create({"name":"css-modules-to-scoped-css","version":"0.0.0+40b49cd3"});
           }
         
 //# sourceMappingURL=css-modules-to-scoped-css.map

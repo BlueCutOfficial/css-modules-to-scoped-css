@@ -110,7 +110,7 @@ ember-scoped-css is more... "scoped". The idea of this addon is to scope your co
 
 ### 5. Importing styles and properties _versus_ parent passes in to child
 
-#### ember-css-modules specific features
+#### i. ember-css-modules specific features
 
 ember-css-modules has three specific features:
 
@@ -141,7 +141,7 @@ ember-css-modules has three specific features:
 
 All of these features are based on the same idea: given the path to a CSS module, the content of this CSS module can be imported in another CSS module. Phrased this way, the approach sounds inspired from importing js modules in our code files, but applied to CSS with a very specific semantic.
 
-#### Alternatives in ember-scoped-css
+#### ii. Alternatives in ember-scoped-css
 
 `{{scoped-class}}` helper we be used to pass a local class from the parent component to the child component, which results in something similar to the former `{{local-class}}`. The approach is still very different: the scoped class is passed in from the component that defines it (rather than any component can retrieve the scoped class from anywhere given the path), and since only components have their CSS scoped, we can't use that helper from outside a component (because outside a component we are not in a CSS module with scoped classes to pass in).
 
@@ -151,4 +151,17 @@ CSS variables: instead of relying on `@values`, we can try to rework the styles 
 
 ember-css-modules transforms the class names but doesn't take any initiative such as emitting layers.
 
-By default, ember-scoped-css emits the components CSS in a [CSS layer](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer) `components`. The name of the layer is [configurable](https://github.com/soxhub/ember-scoped-css/blob/02488a40003923409ffc1ab3fdd1bd6bed7eddaf/README.md#configuration-1), and if you don't use layers at all you can disable this with `layerName: false`.
+By default, ember-scoped-css emits the components CSS in a [CSS layer](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer) `components`. The name of the layer is [configurable](https://github.com/soxhub/ember-scoped-css/blob/02488a40003923409ffc1ab3fdd1bd6bed7eddaf/README.md#configuration-1).
+
+⚠️ If you were not using layers until now, you can choose disable this with `layerName: false`, but... We recommend to start using them. [Vite manages the CSS](https://vite.dev/guide/features.html#css) a bit differently in dev mode and build mode. Without layers to state the CSS order clearly, you may end up with a different order between what you see in development and your production build.
+
+As long as your app is still a classic app though, `ember-scoped-css` is not very intuitive when it comes to layers. You need to state the layers order first, but `ember-scoped-css` won't let you do this in `app.css`, it will define your components styles first. To work around this issue, you can add a `<style>` tag in your `index.html` before any CSS is imported:
+
+```diff
++ <style>
++   @layer utilities, components;
++ </style>
+
+  <link integrity="" rel="stylesheet" href="{{rootURL}}assets/vendor.css">
+  <link integrity="" rel="stylesheet" href="{{rootURL}}assets/css-modules-to-scoped-css.css">
+```

@@ -1,9 +1,10 @@
 /* css-modules-to-scoped-css/components/footer.css */
+@layer scoped-components {
+
 .postscript_e05f79fac {
   color: rgb(28, 30, 36);
   background: rgb(244, 246, 248);
   line-height: 2;
-  font-size: 1.25em;
   margin: 0 auto;
   max-width: 960px;
   padding-top: 1em;
@@ -20,8 +21,11 @@
 }
 
 
+}
 
 /* css-modules-to-scoped-css/components/guides.css */
+@layer scoped-components {
+
 .guide_e9accf110 {
   font-weight: bold;
 }
@@ -30,8 +34,11 @@ ul.e9accf110 > li.e9accf110 {
   padding-bottom: 0.5em;
   font-size: 1.1em;
 }
+}
 
 /* css-modules-to-scoped-css/components/welcome-page-copy.css */
+@layer scoped-components {
+
 /* This CSS was initially copied from welcome-page.css 
 https://github.com/ember-cli/ember-welcome-page/blob/main/ember-welcome-page/src/components/welcome-page.css
 used to easily set up this demo. */
@@ -125,6 +132,7 @@ a.eb52dde03:hover,guide.eb52dde03:hover,a.eb52dde03:active,guide.eb52dde03:activ
   }
 }
 
+}
 
 /* Ember supports plain CSS out of the box. More info: https://cli.emberjs.com/release/advanced-use/stylesheets/ */
 
@@ -143,18 +151,20 @@ body {
   padding: 10px;
 }
 
-p {
-  font-size: 1.25em;
-  margin: 0 0 .75em;
-}
+@layer utilities {
+  p {
+    font-size: 1.25em;
+    margin: 0 0 .75em;
+  }
 
-a:link,
-a:visited {
-  color: rgb(28, 30, 36);
-}
-a:hover,
-a:active {
-  color: rgb(28, 30, 36);
+  a:link,
+  a:visited {
+    color: rgb(28, 30, 36);
+  }
+  a:hover,
+  a:active {
+    color: rgb(28, 30, 36);
+  }
 }
 
 .about {

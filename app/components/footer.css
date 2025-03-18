@@ -1,0 +1,19 @@
+.postscript {
+  color: rgb(28, 30, 36);
+  background: rgb(244, 246, 248);
+  line-height: 2;
+  margin: 0 auto;
+  max-width: 960px;
+  padding-top: 1em;
+}
+.postscript code {
+  color: rgb(244, 246, 248);
+  border-radius: 3px;
+  background-color: rgb(28, 30, 36);
+  display: inline-block;
+  font-family: Menlo, Courier, monospace;
+  font-size: 0.9em;
+  margin: 0 0.1em;
+  padding: 0 0.5em;
+}
+

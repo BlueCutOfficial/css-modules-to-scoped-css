@@ -1,6 +1,8 @@
 /* Ember supports plain CSS out of the box. More info: https://cli.emberjs.com/release/advanced-use/stylesheets/ */
 
-@value ember-orange: rgb(255, 92, 68);
+:root {
+  --ember-orange: rgb(255, 92, 68);
+}
 
 body {
   color: rgb(28, 30, 36);
@@ -13,16 +15,23 @@ body {
   padding: 10px;
 }
 
-a:link,
-a:visited {
-  color: rgb(28, 30, 36);
-}
-a:hover,
-a:active {
-  color: rgb(28, 30, 36);
+@layer utilities {
+  p {
+    font-size: 1.25em;
+    margin: 0 0 .75em;
+  }
+
+  a:link,
+  a:visited {
+    color: rgb(28, 30, 36);
+  }
+  a:hover,
+  a:active {
+    color: rgb(28, 30, 36);
+  }
 }
 
-:global(.about) {
+.about {
   text-align: center;
   font-size: 1.0em;
 }

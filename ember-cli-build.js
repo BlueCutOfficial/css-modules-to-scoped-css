@@ -1,13 +1,12 @@
 'use strict';
-
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
-module.exports = function (defaults) {
-  const app = new EmberApp(defaults, {
-    'ember-scoped-css': {
-      layerName: 'scoped-components',
-    },
-  });
+const { compatBuild } = require('@embroider/compat');
 
-  return app.toTree();
+module.exports = async function (defaults) {
+  const { buildOnce } = await import('@embroider/vite');
+
+  const app = new EmberApp(defaults, {});
+
+  return compatBuild(app, buildOnce);
 };

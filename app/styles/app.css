@@ -1,4 +1,5 @@
 /* Ember supports plain CSS out of the box. More info: https://cli.emberjs.com/release/advanced-use/stylesheets/ */
+@layer utilities, scoped-components;
 
 :root {
   --ember-orange: rgb(255, 92, 68);

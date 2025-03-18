@@ -9,6 +9,10 @@ module.exports = function (defaults) {
       extension: 'module.css',
       intermediateOutputPath: 'css-modules.css',
     },
+    'ember-scoped-css': {
+      passthrough: ['css-modules.css'],
+      passthroughDestination: 'assets',
+    },
   });
 
   return app.toTree();

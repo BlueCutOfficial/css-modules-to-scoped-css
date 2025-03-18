@@ -93,11 +93,11 @@ importers:
         specifier: ^13.1.0
         version: 13.1.0(ember-source@6.2.0(@glimmer/component@1.1.2(@babel/core@7.26.10))(rsvp@4.8.5)(webpack@5.98.0))
       ember-scoped-css:
-        specifier: ^0.22.0
-        version: 0.22.0(@babel/core@7.26.10)(@glimmer/component@1.1.2(@babel/core@7.26.10))(ember-template-lint@6.1.0)(rsvp@4.8.5)(webpack@5.98.0)
+        specifier: ^0.23.0
+        version: 0.23.0(@babel/core@7.26.10)(@glimmer/component@1.1.2(@babel/core@7.26.10))(ember-template-lint@6.1.0)(rsvp@4.8.5)(webpack@5.98.0)
       ember-scoped-css-compat:
-        specifier: ^10.1.0
-        version: 10.1.0(@babel/core@7.26.10)(ember-scoped-css@0.22.0(@babel/core@7.26.10)(@glimmer/component@1.1.2(@babel/core@7.26.10))(ember-template-lint@6.1.0)(rsvp@4.8.5)(webpack@5.98.0))
+        specifier: ^10.2.0
+        version: 10.2.0(@babel/core@7.26.10)(ember-scoped-css@0.23.0(@babel/core@7.26.10)(@glimmer/component@1.1.2(@babel/core@7.26.10))(ember-template-lint@6.1.0)(rsvp@4.8.5)(webpack@5.98.0))
       ember-source:
         specifier: ~6.2.0
         version: 6.2.0(@glimmer/component@1.1.2(@babel/core@7.26.10))(rsvp@4.8.5)(webpack@5.98.0)
@@ -2754,14 +2754,14 @@ packages:
     resolution: {integrity: sha512-89oVHVJwmLDvGvAUWgS87KpBoRhy3aZ6U0Ql6HOmU4TrPkyaa8pM0W81wj9cIwjYprcQtN9EwzZMHnq46+oUyw==}
     engines: {node: 8.* || 10.* || >= 12}
 
-  ember-scoped-css-compat@10.1.0:
-    resolution: {integrity: sha512-TEbHVZ1CKtSzQcHPcdplvgzwzkv4pJqxGmYBlbqpw+ZbNzPuCwe/u4FOFYWmpIhSqqYwwTHTj0gyPtgpIxO4kg==}
+  ember-scoped-css-compat@10.2.0:
+    resolution: {integrity: sha512-jaYadg/QxzXTPP5EDnsY0vGS5WR50SbIQejG8koci2Ar1Siwuj1xUfGcLjIjMUW+L4rscTO5zJvXk2p0S8p0Tg==}
     engines: {node: 14.* || 16.* || >= 18}
     peerDependencies:
       ember-scoped-css: '>=0.18.0'
 
-  ember-scoped-css@0.22.0:
-    resolution: {integrity: sha512-ILJmu+67a/0+v0FYw/3OJEg8BEU3rf9xQT53+X+uStJ3P0HwxJtWvNqPTtRp4n9iA+TqlVxQBAY+2s5ZJHNPYA==}
+  ember-scoped-css@0.23.0:
+    resolution: {integrity: sha512-Ed1kG46yg4yo0Zmpj7xFdR+scTUVO/unymqY3X1yMIA1HNUGyw1SQP9psvOxrNJRGu7Pu2g7gTTT84NsRYoRZQ==}
     engines: {node: '>= 18'}
     peerDependencies:
       ember-template-lint: '>= 5.7.2'
@@ -5725,8 +5725,8 @@ packages:
     resolution: {integrity: sha512-pjy2bYhSsufwWlKwPc+l3cN7+wuJlK6uz0YdJEOlQDbl6jo/YlPi4mb8agUkVC8BF7V8NuzeyPNqRksA3hztKQ==}
     engines: {node: '>= 0.8'}
 
-  unplugin@2.2.0:
-    resolution: {integrity: sha512-m1ekpSwuOT5hxkJeZGRxO7gXbXT3gF26NjQ7GdVHoLoF8/nopLcd/QfPigpCy7i51oFHiRJg/CyHhj4vs2+KGw==}
+  unplugin@2.2.1:
+    resolution: {integrity: sha512-Q0YDhwViJaSnHf1cxLf+/VKhmfdr/ZAS/RL2GQVO0cAbAfJAVUef2bvNu+veyWcEPNwsTlFmMiFLjf8Xeqog8g==}
     engines: {node: '>=18.12.0'}
 
   unset-value@1.0.0:
@@ -9448,16 +9448,16 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  ember-scoped-css-compat@10.1.0(@babel/core@7.26.10)(ember-scoped-css@0.22.0(@babel/core@7.26.10)(@glimmer/component@1.1.2(@babel/core@7.26.10))(ember-template-lint@6.1.0)(rsvp@4.8.5)(webpack@5.98.0)):
+  ember-scoped-css-compat@10.2.0(@babel/core@7.26.10)(ember-scoped-css@0.23.0(@babel/core@7.26.10)(@glimmer/component@1.1.2(@babel/core@7.26.10))(ember-template-lint@6.1.0)(rsvp@4.8.5)(webpack@5.98.0)):
     dependencies:
       ember-cli-babel: 8.2.0(@babel/core@7.26.10)
       ember-cli-htmlbars: 6.3.0
-      ember-scoped-css: 0.22.0(@babel/core@7.26.10)(@glimmer/component@1.1.2(@babel/core@7.26.10))(ember-template-lint@6.1.0)(rsvp@4.8.5)(webpack@5.98.0)
+      ember-scoped-css: 0.23.0(@babel/core@7.26.10)(@glimmer/component@1.1.2(@babel/core@7.26.10))(ember-template-lint@6.1.0)(rsvp@4.8.5)(webpack@5.98.0)
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
 
-  ember-scoped-css@0.22.0(@babel/core@7.26.10)(@glimmer/component@1.1.2(@babel/core@7.26.10))(ember-template-lint@6.1.0)(rsvp@4.8.5)(webpack@5.98.0):
+  ember-scoped-css@0.23.0(@babel/core@7.26.10)(@glimmer/component@1.1.2(@babel/core@7.26.10))(ember-template-lint@6.1.0)(rsvp@4.8.5)(webpack@5.98.0):
     dependencies:
       '@babel/parser': 7.26.10
       '@embroider/addon-shim': 1.9.0
@@ -9479,7 +9479,7 @@ snapshots:
       postcss-selector-parser: 6.1.2
       recast: 0.23.11
       rollup: 4.36.0
-      unplugin: 2.2.0
+      unplugin: 2.2.1
     optionalDependencies:
       webpack: 5.98.0
     transitivePeerDependencies:
@@ -13057,7 +13057,7 @@ snapshots:
 
   unpipe@1.0.0: {}
 
-  unplugin@2.2.0:
+  unplugin@2.2.1:
     dependencies:
       acorn: 8.14.1
       webpack-virtual-modules: 0.6.2

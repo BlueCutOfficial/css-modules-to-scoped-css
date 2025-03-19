@@ -3,7 +3,7 @@ import { setupRenderingTest } from 'css-modules-to-scoped-css/tests/helpers';
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
-import styles from 'css-modules-to-scoped-css/components/welcome-page-copy.css';
+import styles from 'css-modules-to-scoped-css/components/welcome-page-copy.module.css';
 
 module('Integration | Component | welcome-page-copy', function (hooks) {
   setupRenderingTest(hooks);

@@ -7,7 +7,11 @@ module.exports = function (defaults) {
     // Add options here
     cssModules: {
       extension: 'module.css',
-      intermediateOutputPath: 'app/styles/css-modules.css',
+      intermediateOutputPath: 'css-modules.css',
+    },
+    'ember-scoped-css': {
+      passthrough: ['css-modules.css'],
+      passthroughDestination: 'assets',
     },
   });
 

@@ -1,10 +1,10 @@
 # css-modules-to-scoped-css
 
-This repository serves as a demo to migrate from [ember-css-modules](https://github.com/salsify/ember-css-modules) to [ember-scoped-css](https://github.com/soxhub/ember-scoped-css).
+This repository serves as a demo to migrate from [ember-css-modules](https://github.com/salsify/ember-css-modules) to [ember-scoped-css](https://github.com/soxhub/ember-scoped-css). It was created as part of the [Ember Initiative](https://mainmatter.com/ember-initiative/) led by Mainmatter. The Ember Initiative aims to secure the Ember ecosystem on the long run with continuous development and improvements. [Get in touch](https://mainmatter.com/contact/) with us to support the initiative and decide on our team's priorities.
 
 ## Motivation
 
-The Ember community wants to bring Vite to Ember apps. As part of the [Ember Initiative](https://mainmatter.com/ember-initiative/) led by Mainmatter, the Ember Initiative team started an audit of the top 100 addons on [Ember Observer](https://emberobserver.com/). Are these addons compatible with modern Ember apps building with Vite? Do some of them require rework? Or even should they be abandonned in favor of a different solution?
+The Ember community wants to bring Vite to Ember apps. In this context, the Ember Initiative team started an audit of the top 100 addons on [Ember Observer](https://emberobserver.com/). Are these addons compatible with modern Ember apps building with Vite? Do some of them require rework? Or should they even be abandonned in favor of a different solution?
 
 [ember-css-modules](https://github.com/salsify/ember-css-modules) is a widely used addon that brings CSS modules to classic Ember apps. However, it was identified as an addon that should be replaced with a different solution before moving to `@embroider/vite`. The problem is that it relies too much on classic-world semantic, and new options came up to bring CSS modules to modern Ember apps.
 
@@ -14,38 +14,31 @@ This repository introduces one of these options: [ember-scoped-css](https://gith
 
 No, not necessarily; ember-scoped-css is not the only option. You could also follow [Vite documentation](https://vite.dev/guide/features#css-modules) directly or look into what the Ember community came up with. The advantage of ember-scoped-css is that it's quite similar to ember-css-modules in the way the implementation is structured, so it's a migration path we recommend to unblock your upgrade to Vite without changing drastically all your CSS.
 
+### I use ember-css-modules and want to migrate to a Vite-compatible solution, why should I favor ember-scoped-css?
+
+The similarities between ember-css-modules and ember-scoped-css enable the possibility to get them to work at the same time. Let's assume your Ember app contains a lot of components and is integrated to a continuous deployment process: it could be very challenging for you to upgrade to Vite if you need to drastically refactor the CSS as part of the upgrade. The path we suggest in this guide allows you to enable ember-scoped-css file by file, so you can control the pace of the migration until ember-css-modules is no longer used.
+
 ## How to use this repo
 
 ### A demo inspired by ember-welcome-page
 
-The `6.2` classic app in this repository is inspired by [ember-welcome-page](https://github.com/ember-cli/ember-welcome-page).
-
-- For the setup, a `<WelcomePageCopy />` component has been implemented directly in the application. 
-- Starting from there, I introduced changes that allow me to demo ember-css-modules features. 
-- Then, from the version using ember-css-modules, I migrated to ember-scoped-css. 
-- Then, from the version using ember-scoped-css, I migrated to a Vite build.
+The `6.2` app in this repository is inspired by [ember-welcome-page](https://github.com/ember-cli/ember-welcome-page). A `<WelcomePageCopy />` component has been implemented directly in the application and has been reworked to illustrate ember-css-modules and ember-scoped-css features.
 
 ![Screenshot of the demo app, inspired from ember-welcome-page component](./demo-screenshot.png)
 
 ### View the before/after
 
-This repository contains several branches that can be compared as a before/after diff views.
+This repository contains several branches that can be compared as a before/after diff views. These branches and views are a resource material for this guide, that illustrates the different steps of the migration: 
 
-#### 1. From ember-css-modules to ember-scoped-css 
+1. Installing ember-scoped-css for a file by file migration: [diff](https://github.com/BlueCutOfficial/css-modules-to-scoped-css/compare/demo-ember-css-modules..demo-both-addons-installed)
+2. From ember-css-modules to ember-scoped-css: [diff](https://github.com/BlueCutOfficial/css-modules-to-scoped-css/compare/demo-ember-css-modules..demo-ember-scoped-css)
+3. From Classic to Vite once ember-scoped-css is used: [diff](https://github.com/BlueCutOfficial/css-modules-to-scoped-css/compare/demo-ember-scoped-css..demo-ember-scoped-css-vite)
 
-✨ [**Click here to see the diff**](https://github.com/BlueCutOfficial/css-modules-to-scoped-css/compare/demo-ember-css-modules..demo-ember-scoped-css) ✨ or look at the [PR for additonnal comments](https://github.com/BlueCutOfficial/css-modules-to-scoped-css/pull/1).
-
-In the "Walkthrough the diff" section below, we will go through an overview of the differences between both solutions.
-
-#### 2. From Classic to Vite once ember-scoped-css is used 
-
-✨ [**Click here to see the diff**](https://github.com/BlueCutOfficial/css-modules-to-scoped-css/compare/demo-ember-scoped-css..demo-ember-scoped-css-vite) ✨ or look at the [PR for additonnal comments](https://github.com/BlueCutOfficial/css-modules-to-scoped-css/pull/2).
-
-Once your classic app uses ember-scoped-css without style regressions, your app is one step closer to Vite. If you don't have any other blocker to handle, then you can start building with Vite.
+You can also have a look at the [Pull Requests](https://github.com/BlueCutOfficial/css-modules-to-scoped-css/pulls) to read additional comments.
 
 ### Try it yourself
 
-To have a better understanding of the "Walkthrough the diff" below, you might feel the need to see the whole resulting CSS and even experiment things in the browser. To help you doing this as easily as possible, this repository contains two folders `dist_ember-css-modules` and `dist_ember-scoped-css` that each correspond to a dev build of each diff branch.
+To have a better understanding of the differences between both addons, you might feel the need to see the whole resulting CSS and even experiment things in the browser. To help you doing this as easily as possible, this repository contains two folders `dist_ember-css-modules` and `dist_ember-scoped-css` that each corresponds to a dev build of each classic app using one or the other.
 
 - `git clone <this repository URL>`
 - In a terminal, run `npx http-server dist_ember-css-modules`
@@ -57,16 +50,75 @@ But before digging into the differences, let's see the main idea behind "CSS iso
 
 ## CSS isolation by class rename
 
-ember-css-modules and ember-scoped-css both allow you to isolate your components styles by creating a CSS file alongside you component template. They are different, but they both work following the same general idea: "CSS isolation by class rename". To understand this approach, you can use two resources:
+ember-css-modules and ember-scoped-css both allow you to isolate your components styles by creating a CSS file alongside your components templates. They are different, but they both work following the same general idea: "CSS isolation by class rename". To understand this approach, you can use two resources:
 
 - The document [CSS Isolation](https://github.com/soxhub/ember-scoped-css/blob/main/docs/css-isolation.md) from ember-scoped-css repository.
 - The article [Cookbook: migrate an existing Ember app to CSS modules](https://mainmatter.com/blog/2022/08/24/cookbook-ember-app-to-css-modules/) is a walkthrough to install ember-css-modules in an Ember application that used initially one global CSS file. It presents the introduction of CSS modules with a more "practical" angle that allow you to see clearly the "without / with" CSS modules.
 
-To sum it up, ember-css-modules and ember-scoped-css both provide you ways to have your `custom-class` and a component's element renamed to `custom-class+sha` following an interpolation pattern. This way, this class becomes unique and applied only on this specific component. ember-css-modules rename the classes to `._custom-class_sha`, and ember-scoped-css rename the classes to `.custom-class_sha`, but let's not call this a difference.
+To sum it up, ember-css-modules and ember-scoped-css both provide you ways to have your `custom-class` renamed to `custom-class+sha` following an interpolation pattern. This way, this class becomes unique and applies only to this specific component.
 
-There are a few major differences though that will force you to rework your code while migrating from one to the other.
+ember-css-modules renames the classes to `._custom-class_sha`, and ember-scoped-css renames the classes to `.custom-class_sha`. It's a minor difference that turns to be important in the migration process (because both renaming methods conflict). There are also a few major differences that will force you to rework your code while migrating from one to the other.
 
-## Walkthrough the diff
+## Installing ember-scoped-css for a file by file migration
+
+✨ [**Click here to see the diff**](https://github.com/BlueCutOfficial/css-modules-to-scoped-css/compare/demo-ember-css-modules..demo-both-addons-installed) ✨
+
+To use ember-scoped-css in a classic Ember app, you need to install `ember-scoped-css` and `ember-scoped-css-compat`. As soon as you do this, ember-scoped-css class rename starts to apply to your `.css` files and conflicts with ember-css-modules class rename. As result, your styles are broken. To solve this problem, the idea is to split the CSS files into two categories: those handled by ember-css-modules, and those handled by ember-scoped-css. To create these categories, we are going to use the `extension` option of ember-css-modules, and a few other things.
+
+### 1. Change the modules extension for ember-css-modules
+
+The `extension` option of ember-css-modules defines what's the file extension of CSS modules (`.css` by default). This option is not properly documented as an individual feature, it's only mentionned in integration with other features like [using sass preprocessor](https://github.com/salsify/ember-css-modules/blob/master/docs/PREPROCESSORS.md#custom-syntax-directly-in-modules), but it actually works as an individual feature.
+
+👉 Change the extension of all the CSS files of your app to `.module.css`, including `app.css` to `app.module.css`.
+
+👉 Add the following configuration to your `ember-cli-build.js`:
+
+```diff
+  const app = new EmberApp(defaults, {
++   cssModules: {
++     extension: 'module.css',
++   },
+  });
+```
+
+ember-css-modules should now work exactly as before.
+
+### 2. Install and configure ember-scoped-css
+
+👉 Install latest `ember-scoped-css` and `ember-scoped-css-compat`.
+
+👉 Add the following configuration to your `ember-cli-build.js`:
+
+```diff
+  const app = new EmberApp(defaults, {
+    cssModules: {
+      extension: 'module.css',
++     intermediateOutputPath: 'css-modules.css',
+    },
++   'ember-scoped-css': {
++     passthrough: ['css-modules.css'],
++     passthroughDestination: 'assets',
++   },
+  });
+```
+
+👉 Create a file `app/styles/app.css` with the following content:
+
+```css
+@import 'css-modules';
+```
+
+Here, we tell ember-css-modules to emit the modules resulting CSS in a file called `css-modules.css`, then we import this file in the regular `app.css` consumed by ember-scoped-css. The `passthrough` option will tell ember-scoped-css about the existence of this file so it's correctly included in the build. All the files `.module.css` are processed by ember-css-modules, all the files `.css` are processed by ember-scoped-css, and everything gets included in the build. 
+
+At this point, your app styles should be fixed and everything should show exactly as before.
+
+### 3. Do the file by file migration
+
+The migration consists in having more and more CSS modules processed by ember-scoped-css, until you no longer have any module processed by ember-css-modules. To do so, rename a file `.module.css` to `.css`, and eventually refactor ember-css-modules specific features with a different approach using the next section of this guide. ⚠️ Be aware that ember-css-modules allows you to import styles from another CSS module. If you use this feature, figure out the best migration order for all your files.
+
+## From ember-css-modules to ember-scoped-css
+
+✨ [**Click here to see the diff**](https://github.com/BlueCutOfficial/css-modules-to-scoped-css/compare/demo-ember-css-modules..demo-ember-scoped-css) ✨
 
 ### 1. `local-class` _versus_ `class`
 
@@ -117,7 +169,7 @@ ember-scoped-css, on the other hand, tries to be a bit smarter on that field. It
 
 ### 4. Each CSS file is a CSS module _versus_ each component has its CSS module
 
-In ember-css-modules, each CSS file in your `app/styles/` folder is considered a CSS module, and all the classes in there are scoped. This approach allows you to scope the CSS of route controllers. For instance, the local CSS of your `application.hbs` is expected to be defined in `app/styles/application.css`. The class names transform also applies to `app/styles/app.css`. Each time you want to apply a style globally using a class name, you need to use `:global` pseudo-selector.
+In ember-css-modules, each CSS file in your `app/styles/` folder is considered a CSS module, and all the classes in there are scoped. This approach allows you to scope the CSS of route controllers. For instance, the local CSS of your `application.hbs` is expected to be defined in `app/styles/application.css`. The class names transform also applies to `app/styles/app.css` (this questionable behaviour is the purpose of [an issue](https://github.com/salsify/ember-css-modules/issues/195), but let's consider the addon as it is here). Each time you want to apply a style globally using a class name, you need to use `:global` pseudo-selector.
 
 ember-scoped-css is more... "scoped". The idea of this addon is to scope your components CSS by creating a `component.css` alongside a `component.hbs`. On the other hand, `app/styles/app.css` contains global CSS, and if you have other global CSS files they should be explicitly imported.
 
@@ -156,9 +208,9 @@ All of these features are based on the same idea: given the path to a CSS module
 
 #### ii. Alternatives in ember-scoped-css
 
-`{{scoped-class}}` helper we be used to pass a local class from the parent component to the child component, which results in something similar to the former `{{local-class}}`. The approach is still very different: the scoped class is passed in from the component that defines it (rather than any component can retrieve the scoped class from anywhere given the path), and since only components have their CSS scoped, we can't use that helper from outside a component (because outside a component we are not in a CSS module with scoped classes to pass in).
+`{{scoped-class}}` helper can be used to pass a local class from the parent component to the child component, which results in something similar to the former `{{local-class}}`. The approach is still very different: the scoped class is passed in from the component that defines it (rather than any component can retrieve the scoped class from anywhere given the path), and since only components have their CSS scoped, we can't use that helper from outside a component (because outside a component there is no CSS module with scoped classes to pass in).
 
-CSS variables: instead of relying on `@values`, we can try to rework the styles with [CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascading_variables/Using_CSS_custom_properties) (also called CSS variables) directly.
+Instead of relying on `@values`, we can try to rework the styles with [CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascading_variables/Using_CSS_custom_properties) (also called CSS variables) directly.
 
 ### 6. Classic cascading _versus_ providing layers
 
@@ -166,7 +218,7 @@ ember-css-modules transforms the class names but doesn't take any initiative suc
 
 By default, ember-scoped-css emits the components CSS in a [CSS layer](https://developer.mozilla.org/en-US/docs/Web/CSS/@layer) `components`. The name of the layer is [configurable](https://github.com/soxhub/ember-scoped-css/blob/02488a40003923409ffc1ab3fdd1bd6bed7eddaf/README.md#configuration-1).
 
-⚠️ If you were not using layers until now, you can choose disable this with `layerName: false`, but... We recommend to start using them. [Vite manages the CSS](https://vite.dev/guide/features.html#css) a bit differently in dev mode and build mode. Without layers to state the CSS order clearly, you may end up with a different order between what you see in development and your production build.
+⚠️ If you were not using layers until now, you can choose disable this behavior with `layerName: false`, but... We recommend to start using them. [Vite manages the CSS](https://vite.dev/guide/features.html#css) a bit differently in dev mode and build mode. Without layers to state the CSS order clearly, you may end up with a different order between what you see in development and your production build.
 
 As long as your app is still a classic app though, `ember-scoped-css` is not very intuitive when it comes to layers. You need to state the layers order first, but `ember-scoped-css` won't let you do this in `app.css`, it will define your components styles first. To work around this issue, you can add a `<style>` tag in your `index.html` before any CSS is imported:
 
@@ -178,3 +230,15 @@ As long as your app is still a classic app though, `ember-scoped-css` is not ver
   <link integrity="" rel="stylesheet" href="{{rootURL}}assets/vendor.css">
   <link integrity="" rel="stylesheet" href="{{rootURL}}assets/css-modules-to-scoped-css.css">
 ```
+
+## From Classic to Vite once ember-scoped-css is used
+
+✨ [**Click here to see the diff**](https://github.com/BlueCutOfficial/css-modules-to-scoped-css/compare/demo-ember-scoped-css..demo-ember-scoped-css-vite) ✨
+
+Once your classic app uses only ember-scoped-css without style regressions, your app is one step closer to Vite. If you don't have any other blocker to handle, then you can start building with Vite. [ember-vite-codemod](https://github.com/mainmatter/ember-vite-codemod) is here to help!
+
+👉 After running the codemod, remove `ember-scoped-css-compat` from your dependencies. It was here only for the compatibility with the classic app.
+
+👉 [Adapt ember-scoped-css configuration](https://github.com/soxhub/ember-scoped-css?tab=readme-ov-file#configuration). You can also have a look at [the corresponding PR](https://github.com/BlueCutOfficial/css-modules-to-scoped-css/pull/2) on this repository to see additional comments.
+
+

@@ -114,7 +114,9 @@ At this point, your app styles should be fixed and everything should show exactl
 
 ### 3. Do the file by file migration
 
-The migration consists in having more and more CSS modules processed by ember-scoped-css, until you no longer have any module processed by ember-css-modules. To do so, rename a file `.module.css` to `.css`, and eventually refactor ember-css-modules specific features with a different approach using the next section of this guide. ⚠️ Be aware that ember-css-modules allows you to import styles from another CSS module. If you use this feature, figure out the best migration order for all your files.
+The migration consists in having more and more CSS modules processed by ember-scoped-css, until you no longer have any module processed by ember-css-modules. To do so, rename a file `.module.css` to `.css`, and eventually refactor ember-css-modules specific features with a different approach using the next section of this guide. 
+
+⚠️ Be aware that ember-css-modules allows you to import styles from another CSS module (see `composes`, `@value`, and `{{local-class}}` later in this guide). If you use this feature, figure out the best migration order for all your files. For instance, you may want to refactor your current CSS to migrate away from the `composes` pattern even while you are still using ember-css-modules.
 
 ## From ember-css-modules to ember-scoped-css
 
